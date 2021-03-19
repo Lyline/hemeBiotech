@@ -1,57 +1,32 @@
 package com.hemebiotech.analytics;
 
-import java.io.*;
-import java.util.*;
+import com.hemebiotech.analytics.model.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.model.WriteSymptomDataToFile;
+
+import java.util.List;
+import java.util.Map;
 
 public class AnalyticsCounter {
 
-	public static void main(String[] args){
-		/*
-			lire mon fichier
-			le contenu du fichier est stocké dans un tableau
-			les données sont comptabilisées dans un HashMap
-			le HashMap est trié par ordre A->Z
-			exporter les données vers un fichier result.out
-		*/
-		ArrayList <String> symptomArray=new ArrayList<>();
+	public static void main(String[] args) {
 
-		try {
-			BufferedReader reader=new BufferedReader(new FileReader("Project02Eclipse/symptoms.txt"));
-			String line=reader.readLine();
+			ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
 
-			while(line!=null){
-				symptomArray.add(line);
-				line=reader.readLine();
-			}
-			reader.close();
+			List<String> symptomList=readData.getSymptoms();
 
-		} catch (FileNotFoundException e) {
-			System.out.println("lecture impossible ou fichier introuvable");;
-		} catch (IOException e) {
-			System.out.println("pas de données à lire");
+		if (!symptomList.isEmpty()) {
+			Map<String, Integer> symptomMap=readData.sortSymptoms(symptomList);
+
+			symptomMap.forEach((symptom, quantity)-> System.out.println(symptom+" : "+quantity));
+
+			WriteSymptomDataToFile writeData=new WriteSymptomDataToFile("result.out");
+			writeData.writeDataFile(symptomMap);
+		} else {
+			System.out.println("opération annulée");
 		}
 
-		Map<String, Integer> symptomMap = new TreeMap();
 
-		for (int i = 0; i < symptomArray.size(); i++) {
-			symptomMap.put(symptomArray.get(i),
-										 symptomMap.getOrDefault(symptomArray.get(i),0)+1);
-		}
-
-		symptomMap.forEach((symptom, quantity)-> System.out.println(symptom+" : "+quantity));
-
-		try {
-			FileWriter writer=new FileWriter("result.out");
-			symptomMap.forEach((symptom, quantity)-> {
-				try {
-					writer.write(symptom+" : "+quantity+"\n");
-				} catch (IOException e) {
-					System.out.println("ecriture ligne impossible");
-				}
-			});
-			writer.close();
-		} catch (IOException e) {
-			System.out.println("ecriture du fichier impossible");
-		}
 	}
+
+
 }
