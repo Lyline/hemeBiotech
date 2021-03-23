@@ -6,21 +6,24 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Simple brute force implementation
- *
+ * Reads and sorts symptoms from a file input
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
 	
 	/**
-	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 * Constructs an object for read symptom's data
+	 * @param filepath the filepath for read a raw data's file
 	 */
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
 	}
-	
+
+	/**
+	 Reads and adds all symptom from file on a list
+	 @return a symptom's list
+	 */
 	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<>();
 		
@@ -41,6 +44,11 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		return result;
 	}
 
+	/**
+	 Sorts alphabetically the list of symptoms
+	 @param symptomList list of all symptoms to sort
+	 @return list of sorted symptoms
+	 */
 	public Map<String,Integer> sortSymptoms(List<String> symptomList){
 		Map<String, Integer> symptomMap = new TreeMap<>();
 
