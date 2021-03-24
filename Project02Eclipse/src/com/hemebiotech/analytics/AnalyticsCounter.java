@@ -13,7 +13,7 @@ public class AnalyticsCounter {
 
 	public static void main(String[] args) throws IOException {
 
-		//generateData(10000);
+		generateData(10000);
 
 		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
 
