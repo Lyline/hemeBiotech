@@ -53,8 +53,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		Map<String, Integer> symptomMap = new TreeMap<>();
 
 		for (String symptom : symptomList) {
-			symptomMap.put(symptom,
-					symptomMap.getOrDefault(symptom, 0) + 1);
+			symptomMap.put(symptom,symptomMap.getOrDefault(symptom, 0) + 1);
 		}
 		return symptomMap;
 	}
