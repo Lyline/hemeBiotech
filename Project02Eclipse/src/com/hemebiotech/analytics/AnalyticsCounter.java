@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.hemebiotech.analytics.model.GenerateData.generateData;
-import static com.hemebiotech.analytics.model.ReadSymptomDataFromFile.*;
+import static com.hemebiotech.analytics.model.SortByType.*;
 
 public class AnalyticsCounter {
 
