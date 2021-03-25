@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.hemebiotech.analytics.model.GenerateData.generateData;
+import static com.hemebiotech.analytics.model.ReadSymptomDataFromFile.*;
 
 public class AnalyticsCounter {
 
@@ -23,7 +24,14 @@ public class AnalyticsCounter {
 		if (!symptomList.isEmpty()) {
 			Map<String, Integer> symptomMap=readData.sortSymptoms(symptomList);
 
-			symptomMap.forEach((symptom, quantity)-> System.out.println(symptom+" : "+quantity));
+			sortByCardiac(symptomList);
+			sortByVision(symptomList);
+			sortByRespiratory(symptomList);
+			sortByMuscular(symptomList);
+			sortByGastric(symptomList);
+			sortByPain(symptomList);
+			sortByPsychological(symptomList);
+			sortByGlobal(symptomList);
 
 			WriteSymptomDataToFile writeData=new WriteSymptomDataToFile("result.out");
 			writeData.writeDataFile(symptomMap);
