@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import com.hemebiotech.analytics.model.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.model.Symptom;
 import com.hemebiotech.analytics.model.WriteSymptomDataToFile;
 
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.hemebiotech.analytics.model.GenerateData.generateData;
+import static com.hemebiotech.analytics.model.SortByType.*;
 
 public class AnalyticsCounter {
 
@@ -15,14 +17,21 @@ public class AnalyticsCounter {
 
 		generateData(10000);
 
-		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
+		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/dataTest.txt");
 
-		List<String> symptomList=readData.getSymptoms();
+		List<Symptom> symptomList=readData.getSymptoms();
 
 		if (!symptomList.isEmpty()) {
 			Map<String, Integer> symptomMap=readData.sortSymptoms(symptomList);
 
-			symptomMap.forEach((symptom, quantity)-> System.out.println(symptom+" : "+quantity));
+			sortByCardiac(symptomList);
+			sortByVision(symptomList);
+			sortByRespiratory(symptomList);
+			sortByMuscular(symptomList);
+			sortByGastric(symptomList);
+			sortByPain(symptomList);
+			sortByPsychological(symptomList);
+			sortByGlobal(symptomList);
 
 			WriteSymptomDataToFile writeData=new WriteSymptomDataToFile("result.out");
 			writeData.writeDataFile(symptomMap);

@@ -16,7 +16,6 @@ public class GenerateData {
     for (int i=0;i<entryNumber;i++) {
       String entry=data[(int)(Math.random()*(data.length))];
       dataList.add(entry);
-      System.out.println(entry);
     }
 
     FileWriter writer=new FileWriter("Project02Eclipse/dataTest.txt");
