@@ -1,8 +1,8 @@
 package com.hemebiotech.analytics.model;
 
 public class Symptom {
-  String name;
-  SymptomType type;
+  private String name;
+  private SymptomType type;
 
   public Symptom(String name, SymptomType type) {
     this.name = name;

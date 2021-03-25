@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import com.hemebiotech.analytics.model.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.model.Symptom;
 import com.hemebiotech.analytics.model.WriteSymptomDataToFile;
 
 import java.io.IOException;
@@ -15,9 +16,9 @@ public class AnalyticsCounter {
 
 		generateData(10000);
 
-		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
+		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/dataTest.txt");
 
-		List<String> symptomList=readData.getSymptoms();
+		List<Symptom> symptomList=readData.getSymptoms();
 
 		if (!symptomList.isEmpty()) {
 			Map<String, Integer> symptomMap=readData.sortSymptoms(symptomList);
