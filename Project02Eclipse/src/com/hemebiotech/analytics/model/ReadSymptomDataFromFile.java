@@ -11,11 +11,14 @@ import java.util.stream.Collectors;
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
+	/**
+	 The filepath of the input file
+	 */
 	private String filepath;
 	
 	/**
 	 * Constructs an object for read symptom's data
-	 * @param filepath the filepath for read a raw data's file
+	 * @param filepath the filepath of input file
 	 */
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
@@ -47,6 +50,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	/**
 	 Creates a symptom's object
+	 @param element the name of the symptom
 	 @return Symptom object
 	 */
 	public Symptom addSymptomType(String element) {

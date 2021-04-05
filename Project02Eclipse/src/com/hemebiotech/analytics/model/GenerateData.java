@@ -4,8 +4,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ Class for generate fake data
+ */
 public class GenerateData {
 
+  /**
+   Generate data on a file named dataTest.txt
+   @param entryNumber Number of entries to generate
+   @throws IOException Impossible create file
+   */
   public static void generateData(int entryNumber) throws IOException {
     String []data={"anxiety","arrhythmias","blindness","blurred vision","constricted pupils",
     "cough","dialated pupils","dizziness","dry mouth","fever","headache","high blood pressure",

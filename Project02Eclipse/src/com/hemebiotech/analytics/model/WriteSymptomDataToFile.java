@@ -8,11 +8,14 @@ import java.util.Map;
  Creates a class for save and export data on a file .txt
  */
 public class WriteSymptomDataToFile {
+  /**
+   THe filepath of the output file
+   */
   String filePath;
 
   /**
    Constructs an object for store symptom's data
-   @param filePath the filepath for create a new file of treated data
+   @param filePath the filepath for create a output file
    */
   public WriteSymptomDataToFile(String filePath) {
     this.filePath = filePath;

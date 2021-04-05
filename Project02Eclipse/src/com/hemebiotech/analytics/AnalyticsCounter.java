@@ -11,27 +11,28 @@ import java.util.Map;
 import static com.hemebiotech.analytics.model.GenerateData.generateData;
 import static com.hemebiotech.analytics.model.SortByType.*;
 
+/**
+ Main class of feature Analytics counter
+ */
 public class AnalyticsCounter {
 
+	/**
+	 Main method
+	 @param args no param
+	 @throws IOException impossible reading file raw data
+	 */
 	public static void main(String[] args) throws IOException {
 
 		generateData(10000);
 
-		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/dataTest.txt");
+		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
 
 		List<Symptom> symptomList=readData.getSymptoms();
 
 		if (!symptomList.isEmpty()) {
 			Map<String, Integer> symptomMap=readData.sortSymptoms(symptomList);
 
-			sortByCardiac(symptomList);
-			sortByVision(symptomList);
-			sortByRespiratory(symptomList);
-			sortByMuscular(symptomList);
-			sortByGastric(symptomList);
-			sortByPain(symptomList);
-			sortByPsychological(symptomList);
-			sortByGlobal(symptomList);
+			symptomMap.forEach((symptom,quantity)-> System.out.println(symptom+" : "+quantity));
 
 			WriteSymptomDataToFile writeData=new WriteSymptomDataToFile("result.out");
 			writeData.writeDataFile(symptomMap);
@@ -39,8 +40,16 @@ public class AnalyticsCounter {
 		} else {
 			System.out.println("opération annulée");
 		}
-
-
+		/*
+		sortByCardiac(symptomList);
+		sortByVision(symptomList);
+		sortByRespiratory(symptomList);
+		sortByMuscular(symptomList);
+		sortByGastric(symptomList);
+		sortByPain(symptomList);
+		sortByPsychological(symptomList);
+		sortByGlobal(symptomList);
+    */
 	}
 
 
