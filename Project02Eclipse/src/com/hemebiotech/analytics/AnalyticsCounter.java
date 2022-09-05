@@ -23,9 +23,9 @@ public class AnalyticsCounter {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		//generateData(10000);
+		generateData(10000);
 
-		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
+		ReadSymptomDataFromFile readData=new ReadSymptomDataFromFile("Project02Eclipse/dataTest.txt");
 
 		List<Symptom> symptomList=readData.getSymptoms();
 
@@ -34,22 +34,20 @@ public class AnalyticsCounter {
 
 			symptomMap.forEach((symptom,quantity)-> System.out.println(symptom+" : "+quantity));
 
-
-
 			WriteSymptomDataToFile writeData=new WriteSymptomDataToFile("result.out");
 			writeData.writeDataFile(symptomMap);
 
 		} else {
 			System.out.println("opération annulée");
 		}
-/*sortByCardiac(symptomList);
+			sortByCardiac(symptomList);
 			sortByVision(symptomList);
 			sortByRespiratory(symptomList);
 			sortByMuscular(symptomList);
 			sortByGastric(symptomList);
 			sortByPain(symptomList);
 			sortByPsychological(symptomList);
-			sortByGlobal(symptomList);*/
+			sortByGlobal(symptomList);
 	}
 
 
